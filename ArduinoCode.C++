@@ -18,9 +18,9 @@ void loop(){
     int IRsensorState = digitalRead(IRsensor);
     if(IRsensorState == LOW){
         RPM = RPM + 1;
-        println(RPM);
+        Serial.println(RPM);
     } else if(IRsensorState == HIGH){
-        println("Detected nothing");
+        Serial.println("Detected nothing");
     }
 }
 
