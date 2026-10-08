@@ -1,19 +1,26 @@
+
 const int IRsensor = 7;
-int seconds = 0;
+
+unsigned long seconds = 0;
 int RPM = 0;
 
-void setup(){
-    pinMode(IRsensor, INPUT);
-    Serial.begin(9600);
+int previousState = HIGH;
+bool finished = false;
+
+void setup() {
+  pinMode(IRsensor, INPUT);
+  Serial.begin(9600);
+
+  previousState = digitalRead(IRsensor);
 }
 
 void loop(){
     int IRsensorState = digitalRead(IRsensor);
     if(IRsensorState == LOW){
         RPM = RPM + 1;
-        Serial.println(RPM);
+        println(RPM);
     } else if(IRsensorState == HIGH){
-        Serial.println("Detected nothing");
+        println("Detected nothing");
     }
 }
 
